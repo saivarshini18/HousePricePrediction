@@ -7,10 +7,12 @@ from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.preprocessing import LabelEncoder
 
 # Load dataset
-data = pd.read_csv("data/House Price Prediction Dataset.csv")
+data = pd.read_csv("data/HousingPricePredictionDataset.csv", sep="\t")
+print(data.columns)
 
 # Drop ID column
-data = data.drop("Id", axis=1)
+if "Id" in data.columns:
+    data = data.drop("Id", axis=1)
 
 # Encode categorical columns
 le_location = LabelEncoder()
